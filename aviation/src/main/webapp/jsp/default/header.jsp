@@ -14,56 +14,43 @@
 </div>
 
 <c:url var="context" value="/"/>
+<div class="header -renew">
 <div class="header__aligner -renew">
 	<div class="header__logo -renew">
 		<div class="logo">
 			<a class="logo__air" href="" data-click-area="header-logo" data-click-name="AIR">AIR</a>
 		</div>
 	</div>
-	<div class="header__util -renew">
+	<div align="right" class="header__util -renew">
 		<div class="lang -renew _mo-hidden">
 			<div class="lang__aligner -renew">
 				<div class="lang__top">
 					<div class="lang__util">
-						<c:choose>
-							<c:when test="${empty sessionScope.id }">
-								<li><a href="${context }login">Login</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="${context }logout">Logout</a></li>
-							</c:otherwise>
-						</c:choose>
+						<div>
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="${context }login">로그인</a>&nbsp;&nbsp;&nbsp;
+								</c:when>
+								<c:otherwise>
+									<a href="${context }logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+								</c:otherwise>
+							</c:choose>
+							<a href="${context }regist">회원가입</a>&nbsp;&nbsp;&nbsp;								
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-	
+		</div>
 	</div>
 </div>
-<div align="right">
+<div align="center">
 	<hr>
 	<ul>
 		<li><a href="${context }index">HOME</a></li>
-		<li><a href="${context }regist">Regist</a></li>
-		<c:choose>
-			<c:when test="${empty sessionScope.id }">
-				<li><a href="${context }login">Login</a></li>
-			</c:when>
-			<c:otherwise>
-				<li><a href="${context }logout">Logout</a></li>
-			</c:otherwise>
-		</c:choose>
-		<li><a href="${context }memberInfo">MemberInfo</a></li>
-		<li><a href="${context }boardForm">Board</a></li>
+		<li><a href="${context }domestic">국내선 예약</a></li>
+		<li><a href="${context }inter">국제선 예약</a></li>
+		<li><a href="${context }boardForm">문의</a></li>
 	</ul>
 	<hr>
 </div>
-
-
-
-
-
-
-
-

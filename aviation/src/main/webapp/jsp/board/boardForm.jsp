@@ -6,6 +6,12 @@
 		<c:choose>
 			<c:when test="${empty boards }">
 				<h1> 등록된 데이터가 존재하지 않습니다. </h1>
+				<tr>
+					<td colspan="4">
+						${result }
+					</td>
+					<td><button type="button" onclick="location.href='boardWrite'">글쓰기</button></td>
+				</tr>
 			</c:when>
 			<c:otherwise>
 				<table border=1>
