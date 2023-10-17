@@ -28,7 +28,7 @@ public class KakaoService {
 		String reqUrl = "https://kauth.kakao.com/oauth/token";
 		String reqParam = "grant_type=authorization_code";
 		reqParam += "&client_id=537943e9031cf074f79c9818f4fd5af1";
-		reqParam += "&redirect_uri=http://localhost:8086/dbQuiz/kakaoLogin";
+		reqParam += "&redirect_uri=http://localhost:80/avm/kakaoLogin";
 		reqParam += "&code="+code;
 	
 		try {

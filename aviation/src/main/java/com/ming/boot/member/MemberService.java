@@ -30,6 +30,12 @@ public class MemberService {
 		if(member.getUserName() == null || member.getUserName().trim().isEmpty()) {
 			return "이름을 입력하세요.";
 		}
+		if(member.getSsn1() == null || member.getSsn1().trim().isEmpty()) {
+			return "주민번호를 입력하세요.";
+		}
+		if(member.getSsn2() == null || member.getSsn2().trim().isEmpty()) {
+			return "주민번호를 입력하세요.";
+		}
 		
 		MemberDTO check = mapper.login(member.getId());
 		if(check != null) {
@@ -75,6 +81,8 @@ public class MemberService {
 		if(check != null && encoder.matches(pw, check.getPw()) == true) {
 			session.setAttribute("id", check.getId());
 			session.setAttribute("userName", check.getUserName());
+			session.setAttribute("ssn1", check.getSsn1());
+			session.setAttribute("ssn2", check.getSsn2());
 			session.setAttribute("address", check.getAddress());
 			session.setAttribute("mobile", check.getMobile());
 			/*

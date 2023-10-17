@@ -80,8 +80,8 @@ public class BoardService {
 			
 			String suffix = fileName.substring(fileName.lastIndexOf(".")+1, fileName.length());
 			System.out.println("BoardService-boardWriteProc-suffix : " + suffix);
-			if(suffix.equalsIgnoreCase("pdf") == false)
-				return "redirect:boardWrite";
+//			if(suffix.equalsIgnoreCase("pdf") == false)
+//				return "redirect:boardWrite";
 			
 			// 파일의 저장 경로
 			String fileSaveDirectory = "C:\\javas\\upload\\"+sessionId;
@@ -126,7 +126,7 @@ public class BoardService {
 			mapper.incrementHits(n);
 			board.setHits(board.getHits()+1);
 			
-			if(board.getFileName() != null) {
+			if(board.getFileName() != null && board.getFileName().trim().isEmpty() == false) {
 				String[] names = board.getFileName().split("\\\\");
 				for(String name : names)
 					System.out.println("BoardService-boardContent name : "+ name);
