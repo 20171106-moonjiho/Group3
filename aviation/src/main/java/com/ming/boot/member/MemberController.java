@@ -72,11 +72,11 @@ public class MemberController {
 	@RequestMapping("userInfo")
 	public String userInfo(String id, Model model,  RedirectAttributes ra) {
 		String msg = service.userInfo(id, model);
-		if(msg.equals("회원 검색 완료"))
+		//if(msg.equals("회원 검색 완료"))
 			return "member/userInfo";
 		
-		ra.addFlashAttribute("msg", msg);
-		return "redirect:memberInfo";
+		//ra.addFlashAttribute("msg", msg);
+		//return "redirect:memberInfo";
 	}
 	
 	//http://localhost:8086/dbQuiz/update
