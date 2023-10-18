@@ -10,8 +10,13 @@
 	var xhr;
 	function sendProc(){
 		xhr = new XMLHttpRequest();
-		xhr.open('post', 'airplane')
-		xhr.send();
+		var de = document.getElementById('depart').value;
+		var a = document.getElementById('arrive').value;
+		var da = document.getElementById('day').value;
+		var sendData = {depart:de,arrive:a,day:da};
+		sendData=JSON.stingify(sendData);
+		xhr.open('post', 'airplane');
+		xhr.send(sendData);
 		xhr.onreadystatechange = resProc;
 	}
 	
@@ -37,7 +42,9 @@
 	}
 </script>
 <body>
-	
+	출발 : <input type="text" id="depart"><br>
+	도착 : <input type="text" id="arrive"><br>
+	날짜 : <input type="text" id="day"><br>
 	<button type="button" onclick="sendProc()">실행</button>
 	<table border=1>
 		<thead>
@@ -55,7 +62,7 @@
 			</tr>
 		</thead>
 		<tbody id="tbody">
-			
+		
 		</tbody>
 	</table>
 </body>
