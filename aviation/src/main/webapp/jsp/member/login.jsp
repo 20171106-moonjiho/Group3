@@ -12,7 +12,7 @@
 		<input type="text" name="id" placeholder="아이디" id="id"><br>
 		<input type="password" name="pw" placeholder="비밀번호" id="pw"><br>
 		<input type="button" value="로그인" onclick="loginCheck()">
-		<input type="button" value="취소" onclick="location.href='index.jsp'"><br>
+		<input type="button" value="취소" onclick="location.href='index'"><br>
 	</form>
 	</td></tr>
 	<!-- 

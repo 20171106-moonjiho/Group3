@@ -5,8 +5,7 @@
 	ul {padding: 20px;}
 	ul li {display: inline; padding: 15px;}
 	.main_div{height: 150px; padding-top : 80px;}
-</style>    
-
+</style>
 <script src="dbQuiz.js"></script>
 
 <div align="center">
