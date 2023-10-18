@@ -39,6 +39,7 @@
 	}
 </script>
 <body>
+	
 	<button type="button" onclick="sendProc()">실행</button>
 	<table border=1>
 		<thead>
@@ -56,7 +57,7 @@
 			</tr>
 		</thead>
 		<tbody id="tbody">
-		
+			
 		</tbody>
 	</table>
 </body>

@@ -195,20 +195,3 @@ public class MemberService {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
