@@ -21,8 +21,8 @@
 	 -->
 	<tr><td>
 		<a href="https://kauth.kakao.com/oauth/authorize?response_type=code
-		&client_id=537943e9031cf074f79c9818f4fd5af1
-		&redirect_uri=http://localhost:80/avm/kakaoLogin">
+		&client_id=d3a13977a0273b816e425220da2d6622
+		&redirect_uri=http://localhost/kakaoLogin">
 			<img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" />
 		</a>
 	</td></tr>
