@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -27,10 +28,11 @@ public class ReservationController {
 		return service.getSchedule();
 	}
 	
-	@GetMapping("airplaneForm")
-	public String airplaneForm(Model model) {
-		model.addAttribute("schedule", service.getList());
-		return "airplane/airplaneForm";
+	@RequestMapping("domestic")
+	public String airplaneFromProc(String depart_port, String arrive_port, String airplane_date,
+									String currentPage, Model model) {
+		service.getList(depart_port, arrive_port, airplane_date, currentPage, model);
+		return "airplane/domestic";
 	}
 	
 	@GetMapping("inter")

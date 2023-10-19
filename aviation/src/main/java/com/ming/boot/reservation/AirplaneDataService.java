@@ -9,10 +9,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ming.boot.PageService;
+import com.ming.boot.board.BoardDTO;
 
 @Service
 public class AirplaneDataService {
@@ -137,8 +140,35 @@ public class AirplaneDataService {
 			}
 		}
 	}
-	
-	public List<ScheduleDTO> getList(){
-		return mapper.list();
+
+	public void getList(String depart_port, String arrive_port, String airplane_date, String cp, Model model) {
+		int currentPage = 1;
+		try{
+			currentPage = Integer.parseInt(cp);
+		}catch(Exception e){
+			currentPage = 1;
+		}
+		
+		int pageBlock = 10; // 한 페이지에 보일 데이터의 수 
+		int end = pageBlock * currentPage; // 테이블에서 가져올 마지막 행번호
+		int begin = end - pageBlock + 1; // 테이블에서 가져올 시작 행번호
+		
+		List<ScheduleDTO> list ;
+		String url = "domestic?depart_port="+depart_port+
+				"&arrive_port="+arrive_port+"&airplane_date="+airplane_date+"&currentPage=";
+		String result ;
+		if(depart_port == null || arrive_port == null || airplane_date == null) {
+			list = null;
+			result = null;
+		}else {
+			int totalCount = mapper.totalCount(depart_port, arrive_port, airplane_date);
+			list = mapper.list(depart_port, arrive_port, airplane_date, begin, end);
+			System.out.println(totalCount);
+			System.out.println(currentPage);
+			result = PageService.printPage(url, totalCount, pageBlock, currentPage);
+		}		
+		
+		model.addAttribute("schedule", list);
+		model.addAttribute("result", result);
 	}
 }
