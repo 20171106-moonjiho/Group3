@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -31,6 +31,53 @@
     }
 </script>
 
+<script type="text/javascript">
+$("#phoneAutChk").val("false");
+$(function(){
+	//휴대폰 번호 인증var code2 = "";
+	
+	$("#phoneChk").click(function(){
+		var phone = $("#mobile").val();
+		if(phone == null || phone == ""){
+			alert('번호를 입력하세요.');
+		}else{
+		    alert('인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.');
+		    $.ajax({
+		        type:"POST", // post 형식으로 발송
+		        url:"mobileCheck", // controller 위치
+		        data: {mobile:phone}, // 전송할 데이터값
+		        cache : false,
+		        success:function(data){
+		            if(data == "error"){ //실패시 
+		                alert("휴대폰 번호가 올바르지 않습니다.")
+		            }else{            //성공시        
+		                alert("휴대폰 전송이 됨.")
+		                code2 = data; // 성공하면 데이터저장
+		                $("#phone2").attr("disabled", false);
+		                $("#phone").attr("readonly", true);
+		            }
+		        }       
+		    });
+		}
+	}); 		
+
+
+	//휴대폰 인증번호 대조
+  $("#phoneChk2").click(function(){
+      if($("#phone2").val() == code2){ // 위에서 저장한값을 비교함
+           alert('인증성공')
+           $("#phone2").attr("disabled",true);
+           $("#phoneAutChk").val("true");
+           $("#phoneDoubleChk").val("true");
+      }else{
+          alert('인증실패')
+           $("#phoneAutChk").val("false");
+          $("#phoneDoubleChk").val("false");
+      }
+  });
+});
+</script>
+
 <div align="center">
 	<h1>회원 등록</h1>
 	<table >
@@ -53,7 +100,15 @@
 		<input type="text" name="address" id="sample6_address" placeholder="주소"><br>
 		<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소"><br>
 		
-		<input type="text" name="mobile" placeholder="전화번호" ><br>
+		<!-- <input id="mobile" type="text" name="mobile" title="전화번호" required/> -->
+		<input  class="signin_pass" id="mobile" type="text" name="mobile" title="전화번호 입력" placeholder="전화번호 입력해주세요">
+        <input type="hidden" id="phoneAutChk"/>
+        <input  class="signin_pass" type="button" value="입력" id="phoneChk"><br>  <!-- phoneChk 클릭시 함수 발동 -->
+    	
+        <input  class="signin_pass" id="phone2" type="text" name="phone" title="인증번호 입력" placeholder="인증번호 입력해주세요" disabled required>
+        <input  class="signin_pass" type="button" value="인증확인" id="phoneChk2"><br> <!-- phoneChk 클릭시 함수 발동 -->
+        <input type="hidden" id="phoneDoubleChk"/>
+			
 		<input type="button" value="회원가입" onclick="allCheck()">
 		<input type="button" value="취소" onclick="location.href='index'"><br>
 	</form>
