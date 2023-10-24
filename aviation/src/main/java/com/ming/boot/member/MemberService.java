@@ -57,8 +57,8 @@ public class MemberService {
 			ALTER TABLE db_quiz MODIFY pw varchar2(60);
 			COMMIT;
 		 */
-		System.out.println("암호문 : " + secretPass);
-		System.out.println("암호문 길이: " + secretPass.length());
+		//System.out.println("암호문 : " + secretPass);
+		//System.out.println("암호문 길이: " + secretPass.length());
 		
 		int result = mapper.registProc(member);
 		if(result == 1)
@@ -132,7 +132,7 @@ public class MemberService {
 			return "로그인 후 이용하세요.";
 		
 		if(sessionId.equals("admin") == false && sessionId.equals(id) == false) {
-			return "본인의 아이디를 선택하세요.";
+			return "비정상적인 접근입니다.";
 		}
 		
 		MemberDTO member = mapper.login(id);

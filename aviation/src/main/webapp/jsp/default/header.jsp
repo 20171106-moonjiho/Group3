@@ -49,7 +49,7 @@
 									<a href="${context }regist">회원가입</a>&nbsp;&nbsp;&nbsp;																									
 								</c:when>
 								<c:otherwise>
-									<a href="${context }userInfo">마이페이지</a>&nbsp;&nbsp;&nbsp;
+									<a href="${context }userInfo?id=${sessionScope.id}">마이페이지</a>&nbsp;&nbsp;&nbsp;
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -70,3 +70,6 @@
 	</ul>
 	<hr>
 </div>
+<table align="center">
+	<tr height="500">
+		<td>
