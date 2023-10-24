@@ -65,7 +65,7 @@
 	<ul>
 		<li><a href="${context }index">HOME</a></li>
 		<li><a href="${context }domestic">국내선 예약</a></li>
-		<li><a href="${context }airplane">국제선 예약</a></li>
+		<li><a href="${context }inter">국제선 예약</a></li>
 		<li><a href="${context }boardForm">문의</a></li>
 	</ul>
 	<hr>

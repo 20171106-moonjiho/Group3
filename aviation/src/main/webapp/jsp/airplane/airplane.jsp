@@ -10,7 +10,7 @@
 	var xhr;
 	function sendProc(){
 		xhr = new XMLHttpRequest();
-		xhr.open('post', 'airplane')
+		xhr.open('post', 'airport')
 		xhr.send();
 		xhr.onreadystatechange = resProc;
 	}

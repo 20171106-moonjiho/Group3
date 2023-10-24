@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class ReservationController {
 	@Autowired AirplaneDataService service;
@@ -21,7 +25,7 @@ public class ReservationController {
 	
 	@ResponseBody
 	@PostMapping(value="airplane", produces = "application/json; charset=utf-8")
-	public List<AirplaneDTO> ariplane() {
+	public List<AirplaneDTO> airPlane() {
 		service.getAccessData();
 		service.makeSchedule();
 		service.makeDB();
@@ -29,16 +33,36 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("domestic")
-	public String airplaneFromProc(String depart_port, String arrive_port, String airplane_date,
+	public String domestic(String depart_port, String arrive_port, String airplane_date,
 									String currentPage, Model model) {
 		service.getList(depart_port, arrive_port, airplane_date, currentPage, model);
 		return "airplane/domestic";
 	}
 	
-	@GetMapping("inter")
-	public String inter() {
-		service.getAirport();
+	@RequestMapping("inter")
+	public String inter(String depart_port, String arrive_port, String airplane_date,
+									String currentPage, Model model) {
+		if(depart_port != null && arrive_port != null && depart_port.contains(",") && arrive_port.contains(",")) {
+			depart_port = depart_port.split(",")[0];
+			arrive_port = arrive_port.split(",")[0];
+		}
+		service.getList(depart_port, arrive_port, airplane_date, currentPage, model);
 		return "airplane/inter";
 	}
 	
+	@ResponseBody
+	@PostMapping(value="airport", produces = "application/json; charset=utf-8")
+	public List<AirplaneDTO> airport() {
+		service.getAirportData();
+		return null;
+	}
+	
+	@ResponseBody
+	@GetMapping(value="interSearch", produces = "text/plain; charset=utf-8")
+	public String interSearch(HttpServletRequest req) {
+		String search = req.getParameter("value");
+		List<String> list = service.searchAirport(search);
+		Gson gson = new Gson();
+		return gson.toJson(list);	
+	}
 }

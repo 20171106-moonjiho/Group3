@@ -11,16 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ming.boot.PageService;
-import com.ming.boot.board.BoardDTO;
 
 @Service
 public class AirplaneDataService {
 	private List<AirplaneDTO> schedule;
 	@Autowired private ScheduleMapper mapper;
+	@Autowired private AirportMapper p_mapper;
 	
 	public void getAccessData() {
 		/*String reqUrl = "https://api.odcloud.kr/api/15003087/v1/uddi:9bf2212e-7928-4437-bd95-ee7e714a0987"
@@ -163,12 +165,51 @@ public class AirplaneDataService {
 		}else {
 			int totalCount = mapper.totalCount(depart_port, arrive_port, airplane_date);
 			list = mapper.list(depart_port, arrive_port, airplane_date, begin, end);
-			System.out.println(totalCount);
-			System.out.println(currentPage);
 			result = PageService.printPage(url, totalCount, pageBlock, currentPage);
 		}		
 		
 		model.addAttribute("schedule", list);
 		model.addAttribute("result", result);
+	}
+	
+	public void getAirportData() {
+		String reqUrl = "https://api.odcloud.kr/api/3051587/v1/uddi:49a0d0bf-22a9-4f63-acda-d58b8f873129"
+				+ "?serviceKey=7r25pmXeL3y%2FQCcglBm0BVHMdzI3K6L36XJzWEUqemA%2BV8mKeRycrdn4z0q8YxSGJVNqj%2FnF6dS8xWJQd9pCgQ%3D%3D"
+				+ "&perPage=10000";
+		try {
+			URL url = new URL(reqUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+			
+			InputStreamReader isr = new InputStreamReader(conn.getInputStream());
+			ObjectMapper om = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			JsonNode json = om.readTree(isr);
+			String data = json.get("data").toString();
+			List<AirportDTO> list = om.readValue(data, new TypeReference<List<AirportDTO>>() {});
+			int i = 0;
+			for(AirportDTO dto : list) {
+				if(i!=3466) {
+					if(dto.getAirport_code() != null) p_mapper.insert(dto);
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+	}
+
+	public List<String> searchAirport(String search) {
+		List<String> list = new ArrayList<>();
+		System.out.println(search);
+		if(search == null) {
+			search = "";
+		}
+		for(AirportDTO dto : p_mapper.searchAirport(search)) {
+			list.add(dto.getAirport_code()+","+dto.getNation()+" "+dto.getAirport_name());
+		}
+		return list;
 	}
 }
