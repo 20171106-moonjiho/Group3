@@ -24,25 +24,6 @@
 		SELECT * FROM avm WHERE id=#{id}
 	</select>
 	
-	<select id="memberInfo" resultMap="avm">
-	<choose>
-		<when test="select == 'id'">
-			SELECT AAA.* 
-			FROM (SELECT rownum as r, id, user_name, mobile FROM db_quiz WHERE id like '%'||#{search}||'%')AAA 
-			WHERE AAA.r BETWEEN #{begin} AND #{end}</when>
-		<when test="select == 'mobile'">
-			SELECT AAA.* 
-			FROM (SELECT rownum as r, id, user_name, mobile FROM db_quiz WHERE mobile like '%'||#{search}||'%')AAA  
-			WHERE AAA.r BETWEEN #{begin} AND #{end}
-		</when>
-		<otherwise>
-			SELECT AAA.* 
-			FROM (SELECT rownum as r, id, user_name, mobile FROM db_quiz)AAA 
-			WHERE AAA.r BETWEEN #{begin} AND #{end}
-		</otherwise>
-	</choose>
-	</select>
-	
 	<select id="totalCount" >
 		<choose>
 			<when test="select == 'id'">
