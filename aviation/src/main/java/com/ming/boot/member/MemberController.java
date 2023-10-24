@@ -1,18 +1,22 @@
 package com.ming.boot.member;
 
-import jakarta.servlet.http.HttpSession;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
 public class MemberController {
-	@Autowired	private MemberService service ;
+	@Autowired private MemberService service ;
 	@Autowired private HttpSession session;
 	
 	@RequestMapping("regist")
@@ -51,8 +55,7 @@ public class MemberController {
 		model.addAttribute("msg", msg);
 		return "member/login";
 	}
-	
-	
+
 	@RequestMapping("logout")
 	public String logout(RedirectAttributes ra) {
 		session.invalidate();
@@ -148,11 +151,27 @@ public class MemberController {
 	}
 	@Autowired private KakaoService kakaoService;
 	
+	@RequestMapping("mobileCheck")
+	@ResponseBody	
+	public String sendSMS(String mobile) { // 휴대폰 문자보내기
+		Random rand  = new Random(); //랜덤숫자 생성하기 !!
+        String numStr = "";
+        for(int i=0; i<4; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            numStr+=ran;
+        }
+             
+    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
+    	// // 밑에 자세한 설명나옴
+     
+    return numStr;
+	}
+	
 	@RequestMapping("userHeader")
 	public String userHeader() {
 		return "member/userHeader";
 	}
-	
+
 	@RequestMapping("userFooter")
 	public String userFooter() {
 		return "member/userFooter";
