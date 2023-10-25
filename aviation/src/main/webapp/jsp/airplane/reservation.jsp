@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -158,8 +157,8 @@ function confirmCheck(){
 </script> 
 </head>
 <body> 
-
-<div class="container basicFont">
+<c:import url="/header" />
+<div align="center" class="container basicFont">
 	<div class="SeatTop">
 		<a href="index"><img src="resources/images/bomair_logo.png"/></a>
 		<p class="font_title">좌석 지정 페이지</p>
@@ -267,46 +266,6 @@ function confirmCheck(){
 	<!-- <a href="showCheckinInfo">Go to 체크인 내역 확인 페이지 (확인용, 철거예정)</a> -->
 	
 </div>	
+<c:import url="/footer" />
 </body>
 </html>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/header" />
-<script>
-	function changeColor(String seat){
-		var box = document.getElementById(seat);
-		box.bgcolor="blue";
-	}
-</script>
-<div align="center">
-	<table>
-		<c:forEach var="column" begin="1" end="10">
-			<tr>
-				<c:forEach var="row" items="A,B,C">
-					<th border="1"><input id ="${row }${column }" border = "1"
-					 width="50" height="50" bgcolor="white" onclick="changeColor(${row }${column })">${row }${column }</div>
-					</th>
-				</c:forEach>
-				<th width = "50"></th>
-				<c:forEach var="row" items="D,E,F">
-					<th border="1">${row }${column }
-					</th>
-				</c:forEach>
-			</tr>
-		</c:forEach>
-		
-	</table>
-</div>
-<c:import url="/footer" />
-
-
-
-
-
-
-
-
-
-
->>>>>>> branch 'hss' of https://github.com/20171106-moonjiho/Group3.git
