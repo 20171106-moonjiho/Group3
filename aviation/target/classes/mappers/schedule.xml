@@ -15,7 +15,7 @@
 	
 	<select id="list">
 		SELECT AAA.* FROM (select rownum as r, A.* from ( select * from airplane_schedule where depart_port = #{depart_port}
-		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date})A )AAA  WHERE AAA.r BETWEEN #{begin} AND #{end}
+		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date} ORDER BY depart_time ASC)A )AAA  WHERE AAA.r BETWEEN #{begin} AND #{end}
 	</select>
 	
 	<select id="totalCount">
