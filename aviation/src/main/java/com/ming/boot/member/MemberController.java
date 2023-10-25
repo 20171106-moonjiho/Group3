@@ -75,11 +75,11 @@ public class MemberController {
 	@RequestMapping("userInfo")
 	public String userInfo(String id, Model model,  RedirectAttributes ra) {
 		String msg = service.userInfo(id, model);
-		//if(msg.equals("회원 검색 완료"))
+		if(msg.equals("회원 검색 완료"))
 			return "member/userInfo";
 		
-		//ra.addFlashAttribute("msg", msg);
-		//return "redirect:memberInfo";
+		ra.addFlashAttribute("msg", msg);
+		return "redirect:index";
 	}
 	
 	//http://localhost:8086/dbQuiz/update
@@ -164,9 +164,23 @@ public class MemberController {
     	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
     	// // 밑에 자세한 설명나옴
      
-    	return numStr;
+    return numStr;
 	}
 	
+	@RequestMapping("userHeader")
+	public String userHeader() {
+		return "member/userHeader";
+	}
+
+	@RequestMapping("userFooter")
+	public String userFooter() {
+		return "member/userFooter";
+	}
+	
+	@RequestMapping("myReservation")
+	public String myReservation() {
+		return "member/myReservation";
+	}
 }
 
 
