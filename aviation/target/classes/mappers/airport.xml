@@ -13,14 +13,3 @@
 		insert into airport_db values(#{airport_code}, #{nation}, #{airport_name})
 	</insert>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-

@@ -250,14 +250,3 @@ public class BoardService {
 		return "게시글 삭제 완료";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
