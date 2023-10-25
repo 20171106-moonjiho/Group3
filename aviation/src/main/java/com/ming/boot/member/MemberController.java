@@ -164,10 +164,25 @@ public class MemberController {
     	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
     	// // 밑에 자세한 설명나옴
      
-    	return numStr;
-	}
-	
-}
+        return numStr;
+    	}
+    	
+    	@RequestMapping("userHeader")
+    	public String userHeader() {
+    		return "member/userHeader";
+    	}
+
+    	@RequestMapping("userFooter")
+    	public String userFooter() {
+    		return "member/userFooter";
+    	}
+    	
+    	@RequestMapping("myReservation")
+    	public String myReservation() {
+    		return "member/myReservation";
+    	}
+    }
+
 
 
 
