@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div align="center">
-	<table border="1" width="50%" height="100%">
+	<table border="1" width="800" height="600">
 	<tr height="100%">
 		<td width="20%">
 			<h1>마이페이지</h1>

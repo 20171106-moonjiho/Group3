@@ -12,7 +12,7 @@ public class SeatService {
 	@Autowired private SeatMapper mapper;
 
 	public List<SeatDTO> getSeat(String no) {
-		mapper.getSeat(no);
+		//mapper.getSeat(no);
 		return null;
 	}
 	
