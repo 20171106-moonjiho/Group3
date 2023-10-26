@@ -23,6 +23,10 @@
 		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date}
 	</select>
 	
+	<select id="getAirplane">
+		select * from airplane_schedule where airplane_no= #{airplane_no}
+	</select>
+	
 </mapper>
 
 

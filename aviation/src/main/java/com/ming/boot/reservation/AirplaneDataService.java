@@ -190,6 +190,7 @@ public class AirplaneDataService {
 			List<AirportDTO> list = om.readValue(data, new TypeReference<List<AirportDTO>>() {});
 			int i = 0;
 			for(AirportDTO dto : list) {
+				i++;
 				if(i!=3466) {
 					if(dto.getAirport_code() != null) p_mapper.insert(dto);
 				}
@@ -211,5 +212,9 @@ public class AirplaneDataService {
 			list.add(dto.getAirport_code()+","+dto.getNation()+" "+dto.getAirport_name());
 		}
 		return list;
+	}
+
+	public ScheduleDTO getAirplane(int airplane_no) {
+		return mapper.getAirplane(airplane_no);
 	}
 }

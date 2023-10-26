@@ -17,4 +17,6 @@ public interface ScheduleMapper {
 									@Param("airplane_date")String airplane_date, @Param("begin")int begin,
 									@Param("end")int end);
 
+	ScheduleDTO getAirplane(int airplane_no);
+
 }
