@@ -190,7 +190,8 @@ public class AirplaneDataService {
 			List<AirportDTO> list = om.readValue(data, new TypeReference<List<AirportDTO>>() {});
 			int i = 0;
 			for(AirportDTO dto : list) {
-				if(i!=3466) {
+				i++;
+				if(i>3466) {
 					if(dto.getAirport_code() != null) p_mapper.insert(dto);
 				}
 			}

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,6 +11,7 @@
     %>
 <!DOCTYPE html>
 <html>
+<c:import url="/header" />
 <head>
 <meta charset="UTF-8">
 <title>Air : Seat Choice</title>
@@ -269,10 +269,7 @@ function confirmCheck(){
 </div>	
 </body>
 </html>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/header" />
+
 <script>
 	function changeColor(String seat){
 		var box = document.getElementById(seat);
@@ -299,14 +296,3 @@ function confirmCheck(){
 	</table>
 </div>
 <c:import url="/footer" />
-
-
-
-
-
-
-
-
-
-
->>>>>>> branch 'hss' of https://github.com/20171106-moonjiho/Group3.git

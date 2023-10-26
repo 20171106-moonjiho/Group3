@@ -20,7 +20,7 @@ public class ReservationController {
 	
 	@GetMapping("airplane")
 	public String airplane() {
-		return "airplane/airplane";
+		return "admin/airplane";
 	}
 	
 	@ResponseBody

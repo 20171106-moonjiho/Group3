@@ -6,8 +6,8 @@ public class AirportDTO {
 /*
 create table airport_db(
 airport_code varchar2(3) not null,
-nation varchar2(30) not null,
-airport_name varchar2(30) not null,
+nation varchar2(100) not null,
+airport_name varchar2(100) not null,
 primary key(airport_code)
 ); 
 */	
