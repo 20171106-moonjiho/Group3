@@ -6,7 +6,7 @@ function allCheck(){
 	ssn1 = document.getElementById('ssn1');
 	ssn2 = document.getElementById('ssn2');
 	mobile = document.getElementById('mobile');
-	phone = document.getElementById('phone');
+	phone2 = document.getElementById('phone2');
 	
 	if(id.value == ""){
 		alert('아이디는 필수 항목입니다.');
@@ -22,11 +22,11 @@ function allCheck(){
 		alert('주민번호는 필수 항목입니다.');
 	}else if(mobile.value == ""){
 		alert('전화번호는 필수 항목입니다.');
-	}else if(phone.value == ""){
+	}else if(phone2.value == ""){
 		alert('인증번호를 입력하세요.');
-	}else if($("#phoneAutChk").val() == "false"){
+	}else if($("#phoneAutChk").val() != "true"){
 		alert('휴대폰 인증을 완료해주세요')
-	}else if($("#phoneDoubleChk").val() == "false"){
+	}else if($("#phoneDoubleChk").val() != "true"){
 		alert('휴대폰 인증을 완료해주세요')
 	}else{
 		var f = document.getElementById('f');

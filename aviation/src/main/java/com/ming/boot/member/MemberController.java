@@ -1,7 +1,5 @@
 package com.ming.boot.member;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ming.boot.reservation.AirplaneDataService;
-import com.ming.boot.reservation.ScheduleDTO;
-import com.ming.boot.seat.SeatDTO;
-import com.ming.boot.seat.SeatService;
-
 import jakarta.servlet.http.HttpSession;
 
 
 @Controller
 public class MemberController {
 	@Autowired private MemberService service ;
-	@Autowired private SeatService s_service;
-	@Autowired private AirplaneDataService a_service;
 	@Autowired private HttpSession session;
 	
 	@RequestMapping("regist")
@@ -187,15 +178,17 @@ public class MemberController {
     	}
     	
     	@RequestMapping("myReservation")
-    	public String myReservation(Model model) {
-    		List<SeatDTO> list = s_service.getSeatByMember();
-    		List<ScheduleDTO> result = new ArrayList<>();
-    		for(SeatDTO seat : list) {
-    			ScheduleDTO airplane = a_service.getAirplane(seat.getAirplane_no());
-    			if(!result.contains(airplane)) result.add(airplane);
-    		}
-    		model.addAttribute("seats", list);
-    		model.addAttribute("airplanes", result);
+    	public String myReservation() {
     		return "member/myReservation";
     	}
     }
+
+
+
+
+
+
+
+
+
+
