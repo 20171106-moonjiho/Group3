@@ -1,4 +1,4 @@
-package com.ming.boot.payment;
+/*package com.ming.boot.payment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -92,3 +92,4 @@ public class PaymentService {
 	}
 
 }
+*/

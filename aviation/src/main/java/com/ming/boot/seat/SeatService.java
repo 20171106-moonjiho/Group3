@@ -10,18 +10,19 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class SeatService {
 	@Autowired private SeatMapper mapper;
-
-	public List<SeatDTO> getSeat(String no) {
-		//mapper.getSeat(no);
-		return null;
-	}
-	
 	@Autowired private HttpSession session;
-	public String reservation(int airplane_no) {
-		String sessionId = (String) session.getAttribute("id");
-		if(sessionId == null)
-			return "redirect:login";
+
+	public List<SeatDTO> getSeatByMember() {
+		return mapper.getSeatByMember((String) session.getAttribute("id"));
 		
-		return "";
+	}
+
+	public void regist(SeatDTO seat) {
+		mapper.regist(seat);
+		
+	}
+
+	public List<String> getSeatByAirplane(String no) {
+		return mapper.getSeatByAirplane(no);
 	}
 }
