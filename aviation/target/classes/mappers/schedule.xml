@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ming.boot.reservation.ScheduleMapper">
+	<insert id="insert">
+		<selectKey order="BEFORE" keyProperty="airplane_no" resultType="int">
+			SELECT NVL(max(airplane_no), 0)+1 FROM airplane_schedule
+		</selectKey>
+		INSERT INTO airplane_schedule
+		VALUES(#{airplane_no}, #{company}, #{airplane_name}, #{depart_port},
+		 #{arrive_port}, #{depart_time}, #{arrive_time}, #{airplane_date})
+	</insert>
+	
+	<select id="list">
+		SELECT AAA.* FROM (select rownum as r, A.* from ( select * from airplane_schedule where depart_port = #{depart_port}
+		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date} ORDER BY depart_time ASC)A )AAA  WHERE AAA.r BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="totalCount">
+		select count(airplane_no) from airplane_schedule where depart_port = #{depart_port}
+		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date}
+	</select>
+	
+	<select id="getAirplane">
+		select * from airplane_schedule where airplane_no= #{airplane_no}
+	</select>
+	
+</mapper>

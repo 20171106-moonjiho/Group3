@@ -6,6 +6,7 @@
 <script src="avm.js"></script>
 <script src="regist.js"></script>
 
+<body>
 <div align="center">
 	<h1>회원 등록</h1>
 	<table >
@@ -20,8 +21,8 @@
 		onchange="pwCheck()">
 		<label id="label" ></label><br>
 		<input type="text" name="userName" id="userName" placeholder="이름" ><br>
-		<input type="text" name="ssn1" placeholder="주민번호 앞자리" size=6 maxlength=6> -
-		<input type="password" name="ssn2" placeholder="주민번호 뒷자리" size=7 maxlength=7><br>
+		<input type="text" name="ssn1" id="ssn1" placeholder="주민번호 앞자리" size=6 maxlength=6> -
+		<input type="password" name="ssn2" id="ssn2" placeholder="주민번호 뒷자리" size=7 maxlength=7><br>
 		
 		<input type="text" name="postcode" id="sample6_postcode" placeholder="우편번호">
 		<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -33,7 +34,7 @@
         <input type="hidden" id="phoneAutChk"/>
         <input  class="signin_pass" type="button" value="입력" id="phoneChk"><br>  <!-- phoneChk 클릭시 함수 발동 -->
     	
-        <input  class="signin_pass" id="phone2" type="text" name="phone" title="인증번호 입력" placeholder="인증번호 입력해주세요" disabled required>
+        <input  class="signin_pass" id="phone2" type="text" name="phone2" title="인증번호 입력" placeholder="인증번호 입력해주세요">
         <input  class="signin_pass" type="button" value="인증확인" id="phoneChk2"><br> <!-- phoneChk 클릭시 함수 발동 -->
         <input type="hidden" id="phoneDoubleChk"/>
 			
@@ -42,5 +43,7 @@
 	</form>
 	</td></tr></table>
 </div>
+<script src="avm.js"></script>
+</body>
 
 <c:import url="/footer" />

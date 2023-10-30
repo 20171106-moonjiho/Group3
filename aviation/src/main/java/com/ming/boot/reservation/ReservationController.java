@@ -20,7 +20,7 @@ public class ReservationController {
 	
 	@GetMapping("airplane")
 	public String airplane() {
-		return "airplane/airplane";
+		return "admin/airplane";
 	}
 	
 	@ResponseBody
@@ -63,6 +63,6 @@ public class ReservationController {
 		String search = req.getParameter("value");
 		List<String> list = service.searchAirport(search);
 		Gson gson = new Gson();
-		return gson.toJson(list);	
+		return gson.toJson(list);
 	}
 }
