@@ -101,8 +101,3 @@ INSERT INTO db_quiz VALUES('test3', '3333', '테스트3', '서울시 테삼구',
 INSERT INTO db_quiz VALUES('test4', '4444', '테스트4', '서울시 테사구', '010-1111-4444');
 COMMIT;
 */
-
-
-
-
-

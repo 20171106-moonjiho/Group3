@@ -130,16 +130,12 @@ public class MemberService {
 		model.addAttribute("members", members);
 	}
 	
-	public String userInfo(String id, Model model) {
+	public String userInfo(Model model) {
 		String sessionId = (String)session.getAttribute("id");
 		if(sessionId == null)
 			return "로그인 후 이용하세요.";
 		
-		if(sessionId.equals("admin") == false && sessionId.equals(id) == false) {
-			return "비정상적인 접근입니다.";
-		}
-		
-		MemberDTO member = mapper.login(id);
+		MemberDTO member = mapper.login(sessionId);
 		if(member.getAddress() != null && member.getAddress().isEmpty() == false) {
 			String[] address = member.getAddress().split(",");
 //			System.out.println(address.length);

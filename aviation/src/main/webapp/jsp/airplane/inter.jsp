@@ -45,13 +45,3 @@
 		</table>
 </div>
 <c:import url="/footer" />
-
-
-
-
-
-
-
-
-
-

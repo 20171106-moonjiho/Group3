@@ -48,14 +48,3 @@
 		DELETE FROM avm WHERE id=#{id}
 	</delete>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
