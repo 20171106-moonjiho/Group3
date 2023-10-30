@@ -29,9 +29,9 @@ public class SeatController {
 		return "airplane/payment";
 	}
 	
-	@PostMapping("registReservation")
-	public String registReservation(SeatDTO seat) {
-		service.regist(seat);
-		return "redirect:myReservation";
-	}
+//	@PostMapping("registReservation")
+//	public String registReservation(SeatDTO seat) {
+//		service.regist(seat);
+//		return "redirect:myReservation";
+//	}
 }

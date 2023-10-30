@@ -1,4 +1,4 @@
-/*package com.ming.boot.payment;
+package com.ming.boot.payment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,16 +12,19 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.ming.boot.seat.SeatDTO;
+import com.ming.boot.seat.SeatMapper;
 import com.thoughtworks.qdox.parser.ParseException;
 
 @Service
 public class PaymentService {
-
+/*
 	// ---------------------환불, 결제 토큰생성
 	@Value("impKey")
 	private String impKey;
@@ -90,6 +93,11 @@ public class PaymentService {
 		String amount = p.get("amount").toString();
 		return amount;
 	}
-
-}
 */
+	@Autowired private PaymentMapper mapper;
+	
+	public void regist(SeatDTO seat) {
+		mapper.regist(seat);
+		
+	}
+}
