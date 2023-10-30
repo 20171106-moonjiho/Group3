@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
 <c:import url="/userHeader"/>
+<script src="avm.js"></script>
 <div align="center">
 	<font color="red" >${msg }</font>
 	<h1>회원 수정</h1>
@@ -25,6 +26,3 @@
 </div>
 <c:import url="/userFooter"/>
 <c:import url="/footer" />
-
-
-

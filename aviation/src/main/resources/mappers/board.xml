@@ -57,14 +57,3 @@
 SELECT board_quiz.* FROM board_quiz ORDER BY no DESC;
 SELECT ROWNUM as r, A.* FROM (SELECT board_quiz.* FROM board_quiz ORDER BY no DESC)A;
  -->
-
-
-
-
-
-
-
-
-
-
-

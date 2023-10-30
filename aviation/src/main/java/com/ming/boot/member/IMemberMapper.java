@@ -22,15 +22,3 @@ public interface IMemberMapper {
 	int deleteProc(String id);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -45,13 +45,3 @@
 	</c:choose>
 </div>
 <c:import url="/footer" />
-
-
-
-
-
-
-
-
-
-

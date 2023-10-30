@@ -43,24 +43,3 @@
 </form>
 </div>
 <c:import url="/footer" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

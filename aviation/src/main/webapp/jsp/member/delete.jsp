@@ -21,11 +21,3 @@
 
 <c:import url="/userFooter"/>
 <c:import url="/footer" />
-
-
-
-
-
-
-
-

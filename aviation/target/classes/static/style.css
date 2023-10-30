@@ -1,5 +1,5 @@
 /*style.css
-/*Ç¥ÁØ ±Û²Ã ¼­½Ä ½ºÅ¸ÀÏ*/
+/*Ç¥ï¿½ï¿½ ï¿½Û²ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½*/
 h1,h2,h3,h4,h5,h6{
 	font-family:verdana;
 	color:navy;
@@ -11,7 +11,7 @@ body, td, input, select, textarea, p, th{
 	padding:4px;
 }
 
-/*Ç¥ÁØ ¸µÅ© ½ºÅ¸ÀÏ*/
+/*Ç¥ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½ï¿½*/
 a:link{
 	color:#000000; text-decoration:none;
 	font-size:13px; font-family:verdana;
@@ -25,7 +25,7 @@ a:hover{
 	font-size:13px; font-family:verdana;
 }
 
-/*ÀÔ·Â ¾ç½Ä ½ºÅ¸ÀÏ .Àº class·Î #Àº id·Î*/
+/*ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ .ï¿½ï¿½ classï¿½ï¿½ #ï¿½ï¿½ idï¿½ï¿½*/
 .box{
 	border:1px solid navy;
 	padding-left:8px;
