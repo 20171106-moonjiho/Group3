@@ -7,3 +7,5 @@
 		<hr>
 		Copyright CARE Lab. ALL rights reversed.
 </div>
+</body>
+</html>

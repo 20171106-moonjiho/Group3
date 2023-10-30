@@ -95,18 +95,3 @@ public class BoardController {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

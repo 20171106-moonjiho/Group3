@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
-
-<script>
-	function deleteCheck(){
-		result = confirm('진짜로 삭제하겠습니까?');
-		if(result == true){
-			location.href='boardDeleteProc?no=${board.no}'
-		}
-	}
-</script>
+<script src="avm.js"></script>
 <div align="center">
 	<h1>글 내용</h1>
 	<table border='1'>
@@ -52,9 +44,3 @@
 	</table>
 </div>
 <c:import url="/footer" />
-
-
-
-
-
-

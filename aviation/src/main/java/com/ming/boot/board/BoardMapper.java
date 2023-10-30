@@ -25,8 +25,3 @@ public interface BoardMapper {
 	void boardDeleteProc(int n);
 
 }
-
-
-
-
-

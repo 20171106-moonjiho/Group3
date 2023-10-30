@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ming.boot.seat.SeatMapper">
+	<select id="getSeatByMember">
+		select * from seat_db where member_id = #{id}
+	</select>
+	
+	<insert id="regist">
+		insert into seat_db values(#{airplane_no}, #{seat_no}, #{member_id}, #{passenger_name})
+	</insert>
+	
+	<select id="getSeatByAirplane">
+		select seat_no from seat_db where airplane_no = #{no}
+	</select>
+	
+</mapper>
