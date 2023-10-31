@@ -67,10 +67,11 @@ public class MemberController {
 
 	@RequestMapping("logout")
 	public String logout(RedirectAttributes ra) {
+		if(session.getAttribute("kakao") != null) {
+			kakaoService.unlink();
+		}
 		session.invalidate();
 		ra.addFlashAttribute("msg", "로그 아웃");
-		
-		kakaoService.unlink();
 		return "redirect:index";
 	}
 	
@@ -91,7 +92,6 @@ public class MemberController {
 		return "redirect:index";
 	}
 	
-	//http://localhost:8086/dbQuiz/update
 	@RequestMapping("update")
 	public String update() {
 		String sessionId = (String)session.getAttribute("id");
@@ -118,7 +118,6 @@ public class MemberController {
 		return "member/update";
 	}
 	
-	//http://localhost:8086/dbQuiz/delete
 	@RequestMapping("delete")
 	public String delete() {
 		String sessionId = (String)session.getAttribute("id");
@@ -145,11 +144,6 @@ public class MemberController {
 		return "member/delete";
 	}
 	
-	/*
-	 http://localhost:8086/dbQuiz/kakaoLogin?
-	 code=G2QFgIqYioKud_fa02jp1mikcoWU6ccLmKC_-T0xgHFoZlqddz74QKyM9sowSyG0x1c
-	 xjwo9c00AAAGLA55NoQ
-	 */
 	@RequestMapping("kakaoLogin")
 	public String kakaoLogin(String code) {
 		System.out.println("code : " + code);

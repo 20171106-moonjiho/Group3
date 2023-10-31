@@ -34,6 +34,35 @@ function allCheck(){
 	}
 }
 
+function updateCheck(){
+	let id = document.getElementById('id');
+	let pw = document.getElementById('pw');
+	confirm = document.getElementById('confirm');
+	userName = document.getElementById('userName');
+	ssn1 = document.getElementById('ssn1');
+	ssn2 = document.getElementById('ssn2');
+	mobile = document.getElementById('mobile');
+	
+	if(id.value == ""){
+		alert('아이디는 필수 항목입니다.');
+	}else if(pw.value == ""){
+		alert('비밀번호는 필수 항목입니다.');
+	}else if(confirm.value == ""){
+		alert('비밀번호 확인은 필수 항목입니다.');
+	}else if(userName.value == ""){
+		alert('이름은 필수 항목입니다.');
+	}else if(ssn1.value == ""){
+		alert('주민번호는 필수 항목입니다.');
+	}else if(ssn2.value == ""){
+		alert('주민번호는 필수 항목입니다.');
+	}else if(mobile.value == ""){
+		alert('전화번호는 필수 항목입니다.');
+	}else{
+		var f = document.getElementById('f');
+		f.submit();
+	}
+}
+
 function pwCheck(){
 	let pw = document.getElementById('pw');
 	confirm = document.getElementById('confirm');

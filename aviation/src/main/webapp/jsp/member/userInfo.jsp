@@ -3,15 +3,25 @@
 <c:import url="/header" />
 <c:import url="/userHeader"/>
 <div align="center">
-	<form action="userInfo">
-		<h1>개인 정보</h1>
-		아이디 : ${sessionScope.id } <br> 
-		<%-- 비밀번호 : ${sessionScope.pw }<br> --%>
-		이름 : ${sessionScope.userName }<br>
-		주민번호 : ${sessionScope.ssn1 } - ${sessionScope.ssn2 }<br>
-		주소 : ${sessionScope.address } <br>
-		전화번호 : ${sessionScope.mobile } <br><br>	
-	</form>
+		<h2>개인 정보</h2>
+	<table class="type05">
+		<tr>
+		<th>아이디</th>
+		<td width="500">${sessionScope.id }</td>
+		</tr>
+		<tr>
+		<th>이름</th>
+		<td width="500">${sessionScope.userName }</td>
+		</tr>
+		<tr>
+		<th>주소</th>
+		<td width="500">${sessionScope.address }</td>
+		</tr>
+		<tr>
+		<th>전화번호</th>
+		<td width="500">${sessionScope.mobile }</td>
+		</tr>	
+	</table>
 </div>	
 <c:import url="/userFooter"/>
 <c:import url="/footer"/>

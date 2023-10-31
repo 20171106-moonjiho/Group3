@@ -54,16 +54,6 @@ public class KakaoService {
 			
 			System.out.println("accessToken : " + map.get("access_token"));
 			System.out.println(map);
-			/*
-			{
-				access_token=ZpwWZKvFkNsnzczGy27sLJLife5weMqEIS1Md2PHCiolTgAAAYsDuywa,
-				token_type=bearer,
-				refresh_token=UMtPpXdLGcp2S19be-PzKXvtKn9S-ZNTUYPZa1ftCiolTgAAAYsDuywZ, 
-				expires_in=21599, 
-				scope=age_range birthday account_email profile_image gender profile_nickname, 
-				refresh_token_expires_in=5183999
-			}
-			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,41 +76,9 @@ public class KakaoService {
 			
 			ObjectMapper om = new ObjectMapper();
 			JsonNode jsonNode = om.readTree(conn.getInputStream());
-			System.out.println(jsonNode.get("kakao_account"));
-		System.out.println(jsonNode.get("kakao_account").get("profile").get("nickname"));
-		
-//		session.setAttribute("id", jsonNode.get("kakao_account").get("email"));
-		session.setAttribute("id", jsonNode.get("id"));
-		/*
-		 responseCode : 200
-		{
-		"profile_nickname_needs_agreement":false,
-		"profile_image_needs_agreement":false,
-		"profile":{
-			"nickname":"김연수",
-			"thumbnail_image_url":"http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_110x110.jpg",
-			"profile_image_url":"http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg",
-			"is_default_image":true
-			},
-		"has_email":true,
-		"email_needs_agreement":false,
-		"is_email_valid":true,
-		"is_email_verified":true,
-		"email":"kyes0222@gmail.com",
-		"has_age_range":true,
-		"age_range_needs_agreement":false,
-		"age_range":"30~39",
-		"has_birthday":true,
-		"birthday_needs_agreement":false,
-		"birthday":"0222",
-		"birthday_type":"SOLAR",
-		"has_gender":true,
-		"gender_needs_agreement":false,
-		"gender":"male"
-		}
-		"김연수"
-
-		 */
+			
+			session.setAttribute("kakao", true);
+			session.setAttribute("id", jsonNode.get("id"));
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

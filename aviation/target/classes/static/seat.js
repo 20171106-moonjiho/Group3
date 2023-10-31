@@ -36,7 +36,6 @@ function finalCheck(){
 		jQuery("#modal_confirmBody").empty();
 		jQuery("#modal_confirmBody").append(tagForConfirm);
 		
-		console.log($("#gogekSeat").val()+", "+$("#gogekName").val());
 		alert($("#gogekSeat").val()+"번 좌석 선택이 완료되었습니다.");
 		$("#modal_seatCheck").modal('toggle');
 		$("#modal_confirm").modal('toggle');
