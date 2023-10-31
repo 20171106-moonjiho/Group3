@@ -21,6 +21,13 @@ import com.google.gson.JsonObject;
 import com.ming.boot.seat.SeatDTO;
 import com.ming.boot.seat.SeatMapper;
 import com.thoughtworks.qdox.parser.ParseException;
+/*
+CREATE TABLE payment(
+order_no VARCHAR2(100) PRIMARY KEY,
+imp_uid VARCHAR2(100),
+status NUMBER
+);*/
+
 
 @Service
 public class PaymentService {

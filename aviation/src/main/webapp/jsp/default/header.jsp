@@ -46,6 +46,9 @@
 		<c:otherwise>
 			<span class="navbar-text">${sessionScope.userName }님 환영합니다.&nbsp;&nbsp;&nbsp;</span>
 			<button type="button" class="btn btn-outline-light me-2" onclick="location.href='logout'">로그아웃</button>
+			<c:if test="${id eq 'admin'}">
+	          	<button type="button" class="btn btn-warning" onclick="location.href='memberInfo'">회원 목록</button>&nbsp;				
+			</c:if>
           	<button type="button" class="btn btn-warning" onclick="location.href='userInfo'">마이페이지</button>
 		</c:otherwise>
 	</c:choose>

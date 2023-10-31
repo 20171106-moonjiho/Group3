@@ -64,7 +64,7 @@
 					<td>${airplane.depart_time }</td>
 					<td>${airplane.arrive_time }</td>
 					<td>${airplane.airplane_date }</td>
-					<td><button type="button" onclick="location.href='reservation2?no=${airplane.airplane_no}'" >예약</button></td>
+					<td><button type="button" onclick="location.href='reservation?no=${airplane.airplane_no}'" >예약</button></td>
 				</tr>
 			</c:forEach>
 			<tr>

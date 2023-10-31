@@ -78,7 +78,7 @@ public class MemberController {
 	public String memberInfo(String select, String search,
 			@RequestParam(value="currentPage", required = false) String cp, Model model) {
 		service.memberInfo(select, search, cp, model);
-		return "member/memberInfo";
+		return "admin/memberInfo";
 	}
 	
 	@RequestMapping("userInfo")
