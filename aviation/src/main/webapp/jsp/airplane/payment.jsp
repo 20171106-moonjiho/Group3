@@ -92,7 +92,7 @@
     				 if(data.cnt > 0){
     	            	var msg = '결제 및 검증이 완료되었습니다.'
     	          		alert(msg)
-    	            	location.href="myReservation"
+    	            	location.href="registReservation"
     	            }else{
     	            	var msg = '결제가 완료되었으나 에러가 발생했습니다.'
     	               	alert(msg)

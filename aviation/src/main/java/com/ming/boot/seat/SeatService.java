@@ -17,10 +17,10 @@ public class SeatService {
 		
 	}
 
-//	public void regist(SeatDTO seat) {
-//		mapper.regist(seat);
-//		
-//	}
+	public void regist(SeatDTO seat) {
+		mapper.regist(seat);
+		
+	}
 
 	public List<String> getSeatByAirplane(String no) {
 		return mapper.getSeatByAirplane(no);
