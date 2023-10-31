@@ -189,13 +189,21 @@ public class MemberController {
     	@RequestMapping("myReservation")
     	public String myReservation(Model model) {
     		List<SeatDTO> list = s_service.getSeatByMember();
+    		List<Integer> airplane_list = new ArrayList<>();
     		List<ScheduleDTO> result = new ArrayList<>();
     		for(SeatDTO seat : list) {
-    			ScheduleDTO airplane = a_service.getAirplane(seat.getAirplane_no());
-    			if(!result.contains(airplane)) result.add(airplane);
+    			if(!airplane_list.contains(seat.getAirplane_no())) {
+    				airplane_list.add(seat.getAirplane_no());
+    			}
+    		}
+    		
+    		for(int no : airplane_list) {
+    			ScheduleDTO airplane = a_service.getAirplane(no);
+    			result.add(airplane);
     		}
     		model.addAttribute("seats", list);
     		model.addAttribute("airplanes", result);
+    		
     		return "member/myReservation";
     	}
     }

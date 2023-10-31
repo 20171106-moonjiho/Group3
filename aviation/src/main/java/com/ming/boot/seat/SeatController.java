@@ -24,14 +24,17 @@ public class SeatController {
 	}
 	
 	@PostMapping("payment")
-	public String payment(SeatDTO seat, Model model) {
-		model.addAttribute("seat", seat);
+	public String payment(SeatDTO seat) {
+		session.setAttribute("seat", seat);
+		System.out.println(seat.getAirplane_no()+seat.getMember_id()+seat.getPassenger_name()+seat.getSeat_no());
 		return "airplane/payment";
 	}
 	
-//	@PostMapping("registReservation")
-//	public String registReservation(SeatDTO seat) {
-//		service.regist(seat);
-//		return "redirect:myReservation";
-//	}
+	@RequestMapping("registReservation")
+	public String registReservation() {
+		SeatDTO seat = (SeatDTO) session.getAttribute("seat");
+		service.regist(seat);
+		session.removeAttribute("seat");
+		return "redirect:myReservation";
+	}
 }
