@@ -11,7 +11,7 @@
 	
 	<!-- 좌석 현황 표출 -->
 	<div class="showSeatArea">
-		<c:forEach var="seat_class" items="F, E, B">
+		<c:forEach var="seat_class" items="F,E,B">
 			<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" id="${seat_class }_div">
 				<c:forEach var="s_no" begin="1" end="3">
 					<input type="radio" class="btn-check" autocomplete="off" name="seat_no"
@@ -25,7 +25,6 @@
 		</c:forEach>
 	</div>
 	<c:forEach var="s" items="${seats}">
-		<c:set var="seatNo" value="${fn:substring(s, 0, 1)}"></c:set>
 		<script>
 		console.log("${s}");
 		$("#${s}").attr("disabled",true)

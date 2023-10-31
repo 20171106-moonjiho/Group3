@@ -2,22 +2,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
 <c:import url="/userHeader"/>
-<table border=1>
-			<tr>
-				<th width="250">항공사</th>
+<table class="type05">
+			<tr height="50">
+				<th width="100">항공사</th>
 				<th width="100">항공편명</th>
 				<th width="100">출발공항</th>
-				<th width="60">도착공항</th>
-				<th width="60">출발시각</th>
-				<th width="60">도착시각</th>
-				<th width="60">운항일</th>
-				<th width="60">좌석</th>
-				<th width="50">예약</th>				
+				<th width="100">도착공항</th>
+				<th width="100">출발시각</th>
+				<th width="100">도착시각</th>
+				<th width="200">운항일</th>
+				<th width="100">좌석</th>
+				<th width="100">예약</th>				
 			</tr>
 			<c:forEach var="seat" items="${seats}">
 				<c:forEach var="airplane" items="${airplanes}">
 					<c:if test="${airplane.airplane_no == seat.airplane_no }">
-						<tr>
+						<tr height="50">
 							<td>${airplane.company }</td>
 							<td>${airplane.airplane_name }</td>
 							<td>${airplane.depart_port }</td>
@@ -31,11 +31,6 @@
 					</c:if>
 				</c:forEach>
 			</c:forEach>
-			<tr>
-				<td colspan="8">
-					${result }
-				</td>
-			</tr>
 		</table>
 
 

@@ -44,16 +44,16 @@
 			날짜<input type="text" id="startDate" name="airplane_date">
 			<button type="submit">조회</button>
 		</form>
-		<table border=1>
+		<table class="type05">
 			<tr>
-				<th width="250">항공사</th>
+				<th width="100">항공사</th>
 				<th width="100">항공편명</th>
 				<th width="100">출발공항</th>
-				<th width="60">도착공항</th>
-				<th width="60">출발시각</th>
-				<th width="60">도착시각</th>
-				<th width="60">운항일</th>
-				<th width="50">예약</th>				
+				<th width="100">도착공항</th>
+				<th width="100">출발시각</th>
+				<th width="100">도착시각</th>
+				<th width="200">운항일</th>
+				<th width="100">예약</th>				
 			</tr>
 			<c:forEach var="airplane" items="${schedule}">
 				<tr>
@@ -64,7 +64,7 @@
 					<td>${airplane.depart_time }</td>
 					<td>${airplane.arrive_time }</td>
 					<td>${airplane.airplane_date }</td>
-					<td><button type="button" onclick="location.href='reservation2?no=${airplane.airplane_no}'" >예약</button></td>
+					<td><button type="button" onclick="location.href='reservation?no=${airplane.airplane_no}'" >예약</button></td>
 				</tr>
 			</c:forEach>
 			<tr>
