@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ming.boot.seat.SeatDTO;
-import com.ming.boot.seat.SeatMapper;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -29,13 +28,11 @@ public class PaymentController {
 	
 	// Iamport
 	private IamportClient iamportClient;
-	private IamportAPI iamportApi;
 
 	public PaymentController(IamportAPI api) {
-		this.iamportApi = api;
 		String IAMPORT_API = api.getApi();
 		String IAMPORT_API_SECRET = api.getApiSecret();
-		this.iamportClient = new IamportClient(IAMPORT_API, IAMPORT_API_SECRET);
+		iamportClient = new IamportClient(IAMPORT_API, IAMPORT_API_SECRET);
 	}
 
 	@PostMapping("verify/{imp_uid}")
@@ -53,7 +50,6 @@ public class PaymentController {
 		String imp_uid = req.getParameter("imp_uid");
 		String order_no = req.getParameter("merchant_uid");
 		int status = 1;
-		//System.out.println(order_no);
 		Map<Object, Object> map = new HashMap<>();
 
 		//주문번호, 결제고유번호, 결제상태를 인자로 넘겨준다

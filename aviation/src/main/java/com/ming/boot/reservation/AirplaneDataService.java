@@ -25,9 +25,11 @@ public class AirplaneDataService {
 	@Autowired private AirportMapper p_mapper;
 	
 	public void getAccessData() {
+		//국제선
 		/*String reqUrl = "https://api.odcloud.kr/api/15003087/v1/uddi:9bf2212e-7928-4437-bd95-ee7e714a0987"
 				+ "?serviceKey=7r25pmXeL3y%2FQCcglBm0BVHMdzI3K6L36XJzWEUqemA%2BV8mKeRycrdn4z0q8YxSGJVNqj%2FnF6dS8xWJQd9pCgQ%3D%3D"
 				+ "&perPage=10000";*/
+		//국내선
 		String reqUrl = "https://api.odcloud.kr/api/15043890/v1/uddi:2d3c9f86-3fa3-4d21-a20d-fac431d2bf6e"
 				+ "?serviceKey=7r25pmXeL3y%2FQCcglBm0BVHMdzI3K6L36XJzWEUqemA%2BV8mKeRycrdn4z0q8YxSGJVNqj%2FnF6dS8xWJQd9pCgQ%3D%3D"
 				+ "&perPage=10000";

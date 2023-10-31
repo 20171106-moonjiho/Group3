@@ -50,19 +50,6 @@ public class MemberService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String secretPass = encoder.encode(member.getPw());
 		member.setPw(secretPass);
-		/*
-			암호문 : $2a$10$HJ3CfbI4MxDDSM3emVsuNudQyQE5StjV7g/UGK2vSQZQRmGy23OXi
-			암호문 길이: 60
-			
-			암호문 : $2a$10$nGmxZK6PVs.NV.QY.UX2T.OuGprkSwMs7FrNq6sOi1RfFPflQWUmO
-			암호문 길이: 60
-			
-			pw 컬럼의 크기를 암호문 크기와 같거나 크게 변경
-			ALTER TABLE db_quiz MODIFY pw varchar2(60);
-			COMMIT;
-		 */
-		//System.out.println("암호문 : " + secretPass);
-		//System.out.println("암호문 길이: " + secretPass.length());
 		
 		int result = mapper.registProc(member);
 		if(result == 1)
@@ -89,12 +76,6 @@ public class MemberService {
 			session.setAttribute("ssn2", check.getSsn2());
 			session.setAttribute("address", check.getAddress());
 			session.setAttribute("mobile", check.getMobile());
-			/*
-			 * session.setAttribute("member", check);
-			 * ${sessionScope.member.id}
-			 * ${sessionScope.member.pw}
-			 * ${sessionScope.member.userName}
-			 */
 			return "로그인 성공";
 		}
 		
@@ -138,14 +119,9 @@ public class MemberService {
 		MemberDTO member = mapper.login(sessionId);
 		if(member.getAddress() != null && member.getAddress().isEmpty() == false) {
 			String[] address = member.getAddress().split(",");
-//			System.out.println(address.length);
-			if(address.length >= 2) {
-				model.addAttribute("postcode", address[0]);
-				member.setAddress(address[1]);
-				if(address.length == 3) {
-					model.addAttribute("detailAddress", address[2]);
-				}
-			}
+			model.addAttribute("postcode", address[0]);
+			member.setAddress(address[1]);
+			model.addAttribute("detailAddress", address[2]);
 		}
 		model.addAttribute("member", member);
 		return "회원 검색 완료";

@@ -7,7 +7,7 @@
 <form action="boardModifyProc" method="post">
 	<input type="hidden" name="no" value="${board.no }" />
 	<h1>글 수정</h1>
-	<table border='1'>
+	<table class="type05">
 		<tr>
 			<th width="100">작성자</th>
 			<td width="200">${board.id }</td>

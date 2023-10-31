@@ -53,7 +53,6 @@ public class BoardService {
 	
 	@Autowired private HttpSession session;
 	public String boardWriteProc(MultipartHttpServletRequest multi) {
-//		System.out.println("title : " + multi.getParameter("title"));
 		String sessionId = (String) session.getAttribute("id");
 		if(sessionId == null)
 			return "redirect:login";
@@ -98,17 +97,8 @@ public class BoardService {
 			} catch (Exception e) {
 				e.printStackTrace();
 				board.setFileName("");
-			} 
-			
-			/*
-			 file.transferTo(); //파일을 이동시키는 기능 
-			 <input type="file" name="upfile"> 을 사용하여 서버에 파일 데이터가 전달되면
-			 웹서버가 임시파일로 저장을 함. 
-			 임시파일로 저장된 파일을 개발자가 원하는 경로로 이동시킬 때 file.transferTo()를 사용함.
-			 */
+			}
 		}
-		
-		// 조회수랑 게시글 번호는 INSERT 명령 시 입력
 		mapper.boardWriteProc(board);
 		return "redirect:boardForm";
 	}
@@ -130,9 +120,7 @@ public class BoardService {
 				String[] names = board.getFileName().split("\\\\");
 				for(String name : names)
 					System.out.println("BoardService-boardContent name : "+ name);
-				/* 	C:\\javas\\upload\\user4\\20230925140126-pom.xml*/
-				
-				/* 20230925140126-01-pom-v01.xml */
+			
 				String[] fileNames = names[4].split("-", 2);
 				for(String fileName : fileNames)
 					System.out.println("BoardService-boardContent fileName : "+ fileName);
@@ -165,7 +153,6 @@ public class BoardService {
 			
 			response.setHeader(
 					"Content-Disposition", 
-					//attachment;filename=pom.xml
 					"attachment;filename=" + URLEncoder.encode(fileNames[1], "UTF-8"));
 			
 			FileInputStream fis = new FileInputStream(file);

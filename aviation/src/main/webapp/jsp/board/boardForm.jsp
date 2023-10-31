@@ -14,13 +14,13 @@
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<table border=1>
+				<table class="type05">
 					<tr>
 						<th width="50">No.</th>
 						<th width="250">제목</th>
 						<th width="100">작성자</th>
-						<th width="100">작성일</th>
-						<th width="60">조회수</th>
+						<th width="200">작성일</th>
+						<th width="100">조회수</th>
 					</tr>
 					
 					<c:forEach var="board" items="${ boards}">

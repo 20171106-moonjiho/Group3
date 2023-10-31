@@ -3,11 +3,9 @@
 <c:import url="/header" />
 
 <div align="center">
+	<h2>게시글 등록</h2>
 	<form action="boardWriteProc" method='post' enctype="multipart/form-data">
-		<table>
-			<caption>
-				<font size="5"><b>게시글 등록</b></font>
-			</caption>
+		<table class="type05">
 			<tr>
 				<th width="100px">제목</th>
 				<td><input style="width: 100%;" type="text" name="title"></td>
