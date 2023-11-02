@@ -10,21 +10,40 @@
 		</selectKey>
 		INSERT INTO airplane_schedule
 		VALUES(#{airplane_no}, #{company}, #{airplane_name}, #{depart_port},
-		 #{arrive_port}, #{depart_time}, #{arrive_time}, #{airplane_date})
+		 #{arrive_port}, #{depart_time}, #{arrive_time}, #{airplane_date}, #{di})
 	</insert>
 	
 	<select id="list">
-		SELECT AAA.* FROM (select rownum as r, A.* from ( select * from airplane_schedule where depart_port = #{depart_port}
-		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date} ORDER BY depart_time ASC)A )AAA  WHERE AAA.r BETWEEN #{begin} AND #{end}
+		SELECT AAA.* FROM (select rownum as r, A.* from ( select * from airplane_schedule
+		where depart_port = #{depart_port} and arrive_port = #{arrive_port} and airplane_date = #{airplane_date}
+		and di = 'd' ORDER BY depart_time ASC)A )AAA  WHERE AAA.r BETWEEN #{begin} AND #{end}
 	</select>
 	
 	<select id="totalCount">
 		select count(airplane_no) from airplane_schedule where depart_port = #{depart_port}
-		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date}
+		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date} and di = 'd'
 	</select>
 	
 	<select id="getAirplane">
 		select * from airplane_schedule where airplane_no= #{airplane_no}
 	</select>
 	
+	<select id="getLastDate">
+		select max(airplane_date) from airplane_schedule where di = 'd'
+	</select>
+	
+	<select id="getLastDate2">
+		select max(airplane_date) from airplane_schedule where di = 'i'
+	</select>
+	
+	<select id="list2">
+		SELECT AAA.* FROM (select rownum as r, A.* from ( select * from airplane_schedule
+		where depart_port = #{depart_port} and arrive_port = #{arrive_port} and airplane_date = #{airplane_date}
+		and di = 'i' ORDER BY depart_time ASC)A )AAA  WHERE AAA.r BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="totalCount2">
+		select count(airplane_no) from airplane_schedule where depart_port = #{depart_port}
+		and arrive_port = #{arrive_port} and airplane_date = #{airplane_date} and di = 'i'
+	</select>
 </mapper>
