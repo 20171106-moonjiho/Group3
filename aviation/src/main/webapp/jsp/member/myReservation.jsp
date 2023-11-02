@@ -26,13 +26,9 @@
 							<td>${airplane.arrive_time }</td>
 							<td>${airplane.airplane_date }</td>
 							<td>${seat.seat_no }</td>
-<<<<<<< HEAD
 							<td><button type="button"
-							 	onclick="location.href='cancel?airplnae_no=${seat.airplane_no}&seat_no=${seat.seat_no }'" >
-							 	취소</button></td>
-=======
-							<td><button type="button" onclick="location.href='cancel?airplane_no=${seat.airplane_no}&seat_no=${seat.seat_no }'" >취소</button></td>
->>>>>>> refs/heads/master
+							 onclick="location.href='cancel?airplane_no=${seat.airplane_no}&seat_no=${seat.seat_no }'" >
+							 취소</button></td>
 						</tr>
 					</c:if>
 				</c:forEach>
