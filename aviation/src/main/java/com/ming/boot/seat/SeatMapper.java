@@ -13,4 +13,8 @@ public interface SeatMapper {
 
 	List<String> getSeatByAirplane(String no);
 
+	void cancel(SeatDTO seat);
+
+	int cancelProc(SeatDTO seat);
+
 }

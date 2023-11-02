@@ -15,6 +15,10 @@
 		<result column="mobile" property="mobile"/>
 	</resultMap>
 	
+	<resultMap type="com.ming.boot.seat.SeatDTO" id="seat_db">
+		<id column="seat_no" property="seat_no"/>
+	</resultMap>
+	
 	<insert id="registProc">
 		INSERT INTO avm
 		VALUES(#{id}, #{pw}, #{userName}, #{ssn1}, #{ssn2}, #{address}, #{mobile})
@@ -66,4 +70,5 @@
 	<delete id="deleteProc">
 		DELETE FROM avm WHERE id=#{id}
 	</delete>
+	
 </mapper>
