@@ -25,4 +25,12 @@ public class SeatService {
 	public List<String> getSeatByAirplane(String no) {
 		return mapper.getSeatByAirplane(no);
 	}
+
+	public SeatDTO getbySeat(SeatDTO seat) {
+		return mapper.getBySeat(seat);
+	}
+
+	public void delete(SeatDTO seat) {
+		mapper.delete(seat);
+	}
 }

@@ -1,14 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:import url="/header" />
+<c:import url="/adminHeader"/>
 <script>
 	var xhr;
-	function sendProc(){
+	function get(){
+		xhr = new XMLHttpRequest();
+		xhr.open('post', 'get')
+		xhr.send();
+		xhr.onreadystatechange = resProc;
+	}
+	
+	function db(){
+		xhr = new XMLHttpRequest();
+		xhr.open('post', 'db')
+		xhr.send();
+		xhr.onreadystatechange = resProc;
+	}
+	
+	function airport(){
 		xhr = new XMLHttpRequest();
 		xhr.open('post', 'airport')
 		xhr.send();
@@ -17,46 +27,14 @@
 	
 	function resProc(){
 		if(xhr.readyState == 4 	&& xhr.status == 200){
-			var resData = JSON.parse(xhr.responseText);
-			//console.log(resData)
-			//console.log(resData[0])
-			//console.log(Object.keys(resData[0]))
-			
-			var printData = "";
-			for(i = 0; i < resData.length; i++){
-				var keys = Object.keys(resData[i])
-				printData += "<tr>";
-				for(j = 0; j < keys.length; j++){
-					//console.log(resData[i][keys[j]])
-					printData += "<td>"+resData[i][keys[j]]+"</td>";
-				}
-				printData += "</tr>";
-			}
-			document.getElementById('tbody').innerHTML = printData;
+			alert(xhr.responseText);
 		}
 	}
 </script>
-<body>
-	
-	<button type="button" onclick="sendProc()">실행</button>
-	<table border=1>
-		<thead>
-			<tr>
-				<th>항공사</th>
-				<th>운항편명</th>
-				<th>출발공항</th>
-				<th>도착공항</th>
-				<th>출발시간</th>
-				<th>도착시간</th>
-				<th>운항요일</th>
-				<th>시작일자</th>
-				<th>종료일자</th>
-				<th>국내_국제</th>
-			</tr>
-		</thead>
-		<tbody id="tbody">
-			
-		</tbody>
-	</table>
-</body>
-</html>
+<div align="center">
+	<button type="button" onclick="get()">스케줄 받아오기</button>
+	<button type="button" onclick="db()">db입력</button>
+	<button type="button" onclick="airport()">공항 정보 입력</button>
+</div>
+<c:import url="/adminFooter"/>
+<c:import url="/footer" />

@@ -16,4 +16,12 @@
 		select seat_no from seat_db where airplane_no = #{no}
 	</select>
 	
+	<select id="getBySeat">
+		select * from seat_db where airplane_no = #{airplane_no} and seat_no = #{seat_no}
+	</select>
+	
+	<delete id="delete">
+		delete from seat_db where airplane_no = #{airplane_no} and seat_no = #{seat_no}
+	</delete>
+	
 </mapper>

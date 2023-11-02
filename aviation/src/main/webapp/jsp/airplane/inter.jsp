@@ -5,7 +5,14 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="airplane.js"></script>
-
+<style>
+	.ui-autocomplete {
+		max-height: 300px;
+		overflow-y: auto;
+		/* prevent horizontal scrollbar */
+		overflow-x: hidden;
+	}
+	</style>
 <div align="center">
 	<h1>국제선 조회</h1>
 		<form action="inter" method="post">

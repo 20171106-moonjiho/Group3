@@ -12,7 +12,7 @@
 				<th width="100">도착시각</th>
 				<th width="200">운항일</th>
 				<th width="100">좌석</th>
-				<th width="100">예약</th>				
+				<th width="100">취소</th>				
 			</tr>
 			<c:forEach var="seat" items="${seats}">
 				<c:forEach var="airplane" items="${airplanes}">
@@ -26,7 +26,9 @@
 							<td>${airplane.arrive_time }</td>
 							<td>${airplane.airplane_date }</td>
 							<td>${seat.seat_no }</td>
-							<td><button type="button" onclick="location.href='reservation?no=${airplane.airplane_no}'" >예약</button></td>
+							<td><button type="button"
+							 	onclick="location.href='cancel?airplnae_no=${seat.airplane_no}&seat_no=${seat.seat_no }'" >
+							 	취소</button></td>
 						</tr>
 					</c:if>
 				</c:forEach>

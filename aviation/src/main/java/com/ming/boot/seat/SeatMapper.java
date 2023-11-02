@@ -13,4 +13,8 @@ public interface SeatMapper {
 
 	List<String> getSeatByAirplane(String no);
 
+	SeatDTO getBySeat(SeatDTO seat);
+
+	void delete(SeatDTO seat);
+
 }

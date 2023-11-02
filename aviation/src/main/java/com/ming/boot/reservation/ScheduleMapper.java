@@ -19,4 +19,15 @@ public interface ScheduleMapper {
 
 	ScheduleDTO getAirplane(int airplane_no);
 
+	String getLastDate();
+
+	String getLastDate2();
+
+	int totalCount2(@Param("depart_port")String depart_port, @Param("arrive_port")String arrive_port,
+					@Param("airplane_date")String airplane_date);
+
+	List<ScheduleDTO> list2(@Param("depart_port")String depart_port, @Param("arrive_port")String arrive_port,
+							@Param("airplane_date")String airplane_date, @Param("begin")int begin,
+							@Param("end")int end);
+
 }
