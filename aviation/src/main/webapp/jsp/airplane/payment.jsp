@@ -1,19 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- jQuery -->
-    <script
-            type="text/javascript"
-            src="https://code.jquery.com/jquery-1.12.4.min.js"
-    ></script>
     <!-- iamport.payment.js -->
-    <script
-            type="text/javascript"
-            src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
-    ></script>
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script>
         var IMP = window.IMP;
         IMP.init("imp78620537");
@@ -22,6 +10,8 @@
     	let seat_no = document.getElementById('seat_no');
     	let member_id = document.getElementById('member_id');
     	let passengerName = document.getElementById('passenger_name');
+    	
+    	let pay = Number(document.getElementById('pay'));
     	
     	function createOrderNum(){
     		const date = new Date();
@@ -43,7 +33,7 @@
                     pay_method: "card",		//결제 방법
                     merchant_uid: "merchant_" + createOrderNum(),//주문번호
                     name: $("#seat_no").val(),		//상품 명
-                    amount: 100,			//금액
+                    amount: $("#pay").val(),			//금액
       				buyer_email: "",
       				buyer_name: $("#passengerName").val(),
       				buyer_tel: $("#mobile").val(),
@@ -107,22 +97,14 @@
         
     </script>
 
-    <c:import url="/header" />
-    <title>Sample Payment</title>
-	결제 페이지<br>
-</head>
-<body>
-<!-- 결제하기 버튼 생성 -->
-	<!-- <form action="registReservation" method="post"> -->
+<c:import url="/header" />
 		<input type='hidden' name= 'airplane_no' value="${seat.airplane_no}">
 		<input type='hidden' name= 'member_id' value="${seat.member_id}">
 		<input type='hidden' id="seat_no" name= 'seat_no' value="${seat.seat_no}">
 		<input type='hidden' id='mobile' name='mobile' value="${avm.mobile }">
 		<input type='hidden' id='address' name='address' value="${avm.address }">
 		<input type='hidden' id='passengerName' name= 'passenger_name' value="${seat.passenger_name}">
+		<input type='hidden' id='pay' name= 'pay' value="${pay}">
 		<input type='button' onclick="requestPay()" value="결제하기">
-	<!-- <input type="submit">결제완료 -->
-	<!-- </form> -->
-</body>
 <c:import url="/footer" />
 </html>

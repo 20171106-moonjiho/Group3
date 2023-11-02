@@ -26,9 +26,14 @@ public class SeatController {
 	}
 	
 	@PostMapping("payment")
-	public String payment(SeatDTO seat) {
+	public String payment(SeatDTO seat, Model model) {
 		session.setAttribute("seat", seat);
-		System.out.println(seat.getAirplane_no()+seat.getMember_id()+seat.getPassenger_name()+seat.getSeat_no());
+		int pay=0;
+		if(seat.getSeat_no().contains("F")) pay = 50000;
+		else if(seat.getSeat_no().contains("E")) pay= 30000;
+		else if(seat.getSeat_no().contains("B")) pay = 10000;
+		else return "redirect:index";			
+		model.addAttribute("pay",pay);
 		return "airplane/payment";
 	}
 	
