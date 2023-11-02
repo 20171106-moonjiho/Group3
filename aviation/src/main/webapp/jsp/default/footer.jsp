@@ -5,7 +5,7 @@
 </table>
 <div align="center">
 		<hr>
-		Copyright CARE Lab. ALL rights reversed.
+		Copyright AIR Lab. ALL rights reversed.
 </div>
 </body>
 </html>

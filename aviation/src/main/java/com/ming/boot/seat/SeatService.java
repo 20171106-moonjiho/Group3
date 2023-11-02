@@ -1,5 +1,7 @@
 package com.ming.boot.seat;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.ming.boot.member.IMemberMapper;
 import com.ming.boot.member.MemberDTO;
+import com.ming.boot.reservation.ScheduleDTO;
+import com.ming.boot.reservation.ScheduleMapper;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -16,9 +20,20 @@ public class SeatService {
 	@Autowired private IMemberMapper m_mapper; 
 	@Autowired private SeatMapper mapper;
 	@Autowired private HttpSession session;
+	@Autowired private ScheduleMapper s_mapper;
 
-	public List<SeatDTO> getSeatByMember() {
-		return mapper.getSeatByMember((String) session.getAttribute("id"));
+	public List<SeatDTO> getSeatByMember(String string) {
+		LocalDate date = LocalDate.now();
+		List<SeatDTO> now = new ArrayList<>();
+		List<SeatDTO> pre = new ArrayList<>();
+		List<SeatDTO> list = mapper.getSeatByMember((String) session.getAttribute("id"));
+		for(SeatDTO seat: list) {
+			ScheduleDTO schedule = s_mapper.getAirplane(seat.getAirplane_no());
+			if(date.isAfter(LocalDate.parse(schedule.getAirplane_date()))) pre.add(seat);
+			else now.add(seat);
+		}
+		if(string.equals("now")) return now;
+		return pre;
 		
 	}
 
