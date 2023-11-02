@@ -12,7 +12,6 @@ public interface SeatMapper {
 	void regist(SeatDTO seat);
 
 	List<String> getSeatByAirplane(String no);
-
 	void cancel(SeatDTO seat);
 
 	int cancelProc(SeatDTO seat);

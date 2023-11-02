@@ -21,4 +21,13 @@ public class HomeController {
 	public String footer() {
 		return "default/footer";
 	}
+	
+	@RequestMapping("adminHeader")
+	public String adminHeader() {
+		return "admin/adminHeader";
+	}
+	@RequestMapping("adminFooter")
+	public String adminFooter() {
+		return "admin/adminFooter";
+	}
 }

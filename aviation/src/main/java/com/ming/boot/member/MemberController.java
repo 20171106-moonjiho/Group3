@@ -78,6 +78,8 @@ public class MemberController {
 	@RequestMapping("memberInfo")
 	public String memberInfo(String select, String search,
 			@RequestParam(value="currentPage", required = false) String cp, Model model) {
+		if(session.getAttribute("id") == null || !session.getAttribute("id").equals("admin"))
+			return "redirect:index";
 		service.memberInfo(select, search, cp, model);
 		return "admin/memberInfo";
 	}
@@ -168,37 +170,36 @@ public class MemberController {
     	// // 밑에 자세한 설명나옴
      
         return numStr;
-    	}
-    	
-    	@RequestMapping("userHeader")
-    	public String userHeader() {
-    		return "member/userHeader";
-    	}
-
-    	@RequestMapping("userFooter")
-    	public String userFooter() {
-    		return "member/userFooter";
-    	}
-    	
-    	@RequestMapping("myReservation")
-    	public String myReservation(Model model) {
-    		List<SeatDTO> list = s_service.getSeatByMember();
-    		List<Integer> airplane_list = new ArrayList<>();
-    		List<ScheduleDTO> result = new ArrayList<>();
-    		for(SeatDTO seat : list) {
-    			if(!airplane_list.contains(seat.getAirplane_no())) {
-    				airplane_list.add(seat.getAirplane_no());
-    			}
-    		}
-    		
-    		for(int no : airplane_list) {
-    			ScheduleDTO airplane = a_service.getAirplane(no);
-    			result.add(airplane);
-    		}
-    		model.addAttribute("seats", list);
-    		model.addAttribute("airplanes", result);
-    		
-    		return "member/myReservation";
-    	}
-    	
     }
+    
+    @RequestMapping("userHeader")
+    public String userHeader() {
+    	return "member/userHeader";
+    }
+    
+    @RequestMapping("userFooter")
+   	public String userFooter() {
+   		return "member/userFooter";
+  	}
+   	
+   	@RequestMapping("myReservation")
+   	public String myReservation(Model model) {
+   		List<SeatDTO> list = s_service.getSeatByMember();
+   		List<Integer> airplane_list = new ArrayList<>();
+   		List<ScheduleDTO> result = new ArrayList<>();
+   		for(SeatDTO seat : list) {
+   			if(!airplane_list.contains(seat.getAirplane_no())) {
+   				airplane_list.add(seat.getAirplane_no());
+   			}
+   		}
+   		
+   		for(int no : airplane_list) {
+   			ScheduleDTO airplane = a_service.getAirplane(no);
+   			result.add(airplane);
+   		}
+   		model.addAttribute("seats", list);
+   		model.addAttribute("airplanes", result);
+   		
+   		return "member/myReservation";
+   	}
+}

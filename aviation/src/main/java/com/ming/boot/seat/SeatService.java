@@ -30,7 +30,6 @@ public class SeatService {
 	public List<String> getSeatByAirplane(String no) {
 		return mapper.getSeatByAirplane(no);
 	}
-
 	public String cancelProc(MemberDTO member, SeatDTO seat) {
 		if(member.getPw() == null || member.getPw().trim().isEmpty()) {
 			return "비밀번호를 입력하세요.";
