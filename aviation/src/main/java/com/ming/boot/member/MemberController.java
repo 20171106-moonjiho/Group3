@@ -184,7 +184,7 @@ public class MemberController {
    	
    	@RequestMapping("myReservation")
    	public String myReservation(Model model) {
-   		List<SeatDTO> list = s_service.getSeatByMember();
+   		List<SeatDTO> list = s_service.getSeatByMember("now");
    		List<Integer> airplane_list = new ArrayList<>();
    		List<ScheduleDTO> result = new ArrayList<>();
    		for(SeatDTO seat : list) {
@@ -201,5 +201,26 @@ public class MemberController {
    		model.addAttribute("airplanes", result);
    		
    		return "member/myReservation";
+   	}
+   	
+   	@RequestMapping("preReservation")
+   	public String preReservation(Model model) {
+   		List<SeatDTO> list = s_service.getSeatByMember("pre");
+   		List<Integer> airplane_list = new ArrayList<>();
+   		List<ScheduleDTO> result = new ArrayList<>();
+   		for(SeatDTO seat : list) {
+   			if(!airplane_list.contains(seat.getAirplane_no())) {
+   				airplane_list.add(seat.getAirplane_no());
+   			}
+   		}
+   		
+   		for(int no : airplane_list) {
+   			ScheduleDTO airplane = a_service.getAirplane(no);
+   			result.add(airplane);
+   		}
+   		model.addAttribute("seats", list);
+   		model.addAttribute("airplanes", result);
+   		
+   		return "member/preReservation";
    	}
 }
