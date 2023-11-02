@@ -202,17 +202,4 @@ public class MemberController {
    		
    		return "member/myReservation";
    	}
-   	
-   	@RequestMapping("cancel")
-   	public String cancel(SeatDTO seat) {
-		if(session.getAttribute("id")==null) {
-			return "redirect/login";
-		}
-   		SeatDTO result = s_service.getbySeat(seat);
-   		if(result == null || !result.getMember_id().equals(session.getAttribute("id")) ) {
-   			return "redirect/myReseration";
-   		}
-   		s_service.delete(seat);
-   		return "redirect/myReseration";
-   	}
 }

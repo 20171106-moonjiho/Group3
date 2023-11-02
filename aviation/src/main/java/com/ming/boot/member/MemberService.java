@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.ming.boot.PageService;
+import com.ming.boot.seat.SeatDTO;
 
 import jakarta.servlet.http.HttpSession;
 import net.nurigo.java_sdk.api.Message;
