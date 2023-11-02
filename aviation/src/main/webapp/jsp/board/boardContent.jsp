@@ -2,6 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
 <script src="avm.js"></script>
+<script>
+function deleteCheck(){
+	result = confirm('진짜로 삭제하겠습니까?');
+	if(result == true){
+		location.href='boardDeleteProc?no=${board.no}'	
+	}
+}
+</script>
 <div align="center">
 	<h1>글 내용</h1>
 	<table class="type05">
