@@ -16,4 +16,7 @@
 		select seat_no from seat_db where airplane_no = #{no}
 	</select>
 	
+	<delete id="cancelProc">
+		DELETE FROM seat_db WHERE airplane_no=#{airplane_no} AND seat_no=#{seat_no}
+	</delete>
 </mapper>
