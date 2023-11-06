@@ -14,19 +14,6 @@ public class ScheduleDTO {
 	di varchar2(1) not null;
 	primary key(airplane_no));
 	*/
-	
-	/*
-	create table inter_schedule(
-	airplane_no number not null,
-	company varchar2(3) not null,
-	airplane_name varchar2(6) not null,
-	depart_port varchar2(3) not null,
-	arrive_port varchar2(3) not null,
-	depart_time varchar2(5) not null,
-	arrive_time varchar2(5) not null,
-	airplane_date varchar2(10) not null, 
-	primary key(airplane_no));
-	*/
 	private int airplane_no;
 	private String company;
 	private String airplane_name;
