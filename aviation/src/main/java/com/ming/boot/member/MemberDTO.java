@@ -21,8 +21,6 @@ public class MemberDTO {
 	private String ssn2;
 	private String address;
 	private String mobile;
-	private String phone;
-	private String numStr;
 	
 	public String getId() {
 		return id;
@@ -72,19 +70,6 @@ public class MemberDTO {
 	public void setSsn2(String ssn2) {
 		this.ssn2 = ssn2;
 	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getNumStr() {
-		return numStr;
-	}
-	public void setNumStr(String numStr) {
-		this.numStr = numStr;
-	}
-	
 }
 
 /*
